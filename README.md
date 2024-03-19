@@ -45,3 +45,6 @@ In Pycharm you can right-click on `tsa.py` file > `More Run/Debug` > `Modify Run
 
 # TODO...
 - [ ] TODO: we don't have the `/datasets/breakfast_action/mappping/mapping.txt` file, and IDK where to get it from!!!!!!!
+  - Improved dense trajectories: [here](https://thoth.inrialpes.fr/people/wang/improved_trajectories.html) and [paper here](https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Wang_Action_Recognition_with_2013_ICCV_paper.pdf)
+  - IDT features provided: [here](https://github.com/annusha/unsup_temp_embed) and [paper here](https://openaccess.thecvf.com/content_CVPR_2019/papers/Kukleva_Unsupervised_Learning_of_Action_Classes_With_Continuous_Temporal_Embedding_CVPR_2019_paper.pdf)
+  - ![setup_img/input_features_breakfast.png](setup_img/input_features_breakfast.png)
