@@ -25,6 +25,14 @@ The reproduction is based on:
 ### Breakfast dataset
 Download ([BreakfastII_15fps_qvga_sync.tar.gz 3.6 GB](https://drive.google.com/open?id=1I70VymcaQypIcJ8TXhb2_AlSmoo6MUm4)) from: https://serre-lab.clps.brown.edu/resource/breakfast-actions-dataset/#Downloads, and we probably also need the "I3D feature (pretrained on Kinetics, no fine-tuning) for rgb and flow (2048 dim): [bf_kinetics_feat.tar.gz (27.7 GB)](https://drive.google.com/open?id=1I70VymcaQypIcJ8TXhb2_AlSmoo6MUm4)"
 
+Change in `breakfast_action.py` the following lines (11-14):
+```
+features_path = "datasets/breakfast_action/features/"
+self.labels_path = "datasets/breakfast_action/groundTruth/"
+self.features_files = sorted(glob.glob(features_path + "/**/**/*.txt"))
+self.mapping_file = "datasets/breakfast_action/mappping/mapping.txt"
+```
+
 ### Inria_YT dataset
 Not relevant for our project, but you can look into this Github repo for details: https://github.com/jalayrac/instructionVideos
 
