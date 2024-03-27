@@ -11,21 +11,49 @@ The reproduction is based on:
 
 
 ## Setup
-1. Download anaconda and open the `Anaconda Prompt`
-2. Create the environment: `conda create --name tsa-action-seg python=3.9`, this should say where the environment was created
-   1. REMEMBER that file path, should be something like `environment location: C:\Users\...\anaconda3\envs\tsa-action-seg`, and you should find a file called `python.exe`, so full path (called from now ENV_PATH) should be something like `C:\Users\...\anaconda3\envs\tsa-action-seg\python.exe`
-3. Activate the conda environment: `conda activate tsa-action-seg`
-4. In the conda terminal go to the root path of this project (`C:\...\dl-action-segmentation\`), and run: `pip install -r requirements.txt`
-5. Open Pycharm, in bottom right you can select your interpreter: ![setup_img/interpreter.png](setup_img/interpreter.png)
-6. Add the Conda environment that we just created, using the ENV_PATH from above ![setup_img/conda_env.png](setup_img/conda_env.png)
+1. Download [NVIDIA driver for your GPU](https://www.nvidia.com/download/index.aspx?lang=en-us)
+   1. For Windows, you can figure out what GPU you have by going to "Device Manager" > "Display adaptors" 
+2. Download the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) 
+3. Download [anaconda3](https://www.anaconda.com/download) and open the `Anaconda Prompt`, 
+   1. Update conda with `conda update conda` (takes about **5min**) and 
+   2. Clean anything that you have installed in the base package (clean the cache): `conda clean -a`
+4. Create the environment: `conda create --name tsa-action-seg python=3.9`, this should say where the environment was created
+   1. REMEMBER that file path, should be something like:
+   ```
+   ## Package Plan ##
 
+     environment location: C:\Users\...\anaconda3\envs\tsa-action-seg
+   ```
+   2. Here you should find a file called `python.exe`, so full path (called from now ENV_PATH) should be something like `C:\Users\...\anaconda3\envs\tsa-action-seg\python.exe`
+5. Activate the conda environment:
+   ```
+   conda activate tsa-action-seg
+   ```
+6. Run the command below, for me it took about **5min** for it to download everything, so just let it run for a bit... (if it seems to get stuck, i.e. you wait for more than 10min you might have to update conda - see above)
+   ```
+   conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+   ```
+7. In the conda terminal go to the root path of this project (`C:\...\dl-action-segmentation\`, in Pycharm you can Right-Click on root folder > Copy Path/Reference > Absolute Path), and run: 
+    ```
+    conda install --file requirements.txt
+    ```
+   1. If conda gets stuck, you could also try running it with pip (but I'd recommend you stick to ONE package manager): `pip install -r requirements.txt`
+8. Open Pycharm, in bottom right you can select your interpreter:   
+   ![setup_img/interpreter.png](setup_img/interpreter.png)
+9. Add the Conda environment that we just created, using the ENV_PATH from above ![setup_img/conda_env.png](setup_img/conda_env.png)
+
+### Helper commands (in case you want to reset the instalation)
+- See all the conda environments `conda env list`
+- Remove the created env: `conda env remove --name tsa-action-seg`
 
 ## Datasets
 
 ### Breakfast dataset
-Download ([BreakfastII_15fps_qvga_sync.tar.gz 3.6 GB](https://drive.google.com/open?id=1I70VymcaQypIcJ8TXhb2_AlSmoo6MUm4)) from: https://serre-lab.clps.brown.edu/resource/breakfast-actions-dataset/#Downloads, and we probably also need the "I3D feature (pretrained on Kinetics, no fine-tuning) for rgb and flow (2048 dim): [bf_kinetics_feat.tar.gz (27.7 GB)](https://drive.google.com/open?id=1I70VymcaQypIcJ8TXhb2_AlSmoo6MUm4)"
+1. You can run the `setup_file_structure.py` file from the root of this folder to setup the dataset folders inside TSA-ActionSeg
 
-Change in `breakfast_action.py` the following lines (11-14):
+2. Download ([BreakfastII_15fps_qvga_sync.tar.gz 3.6 GB](https://drive.google.com/open?id=1I70VymcaQypIcJ8TXhb2_AlSmoo6MUm4)) from: https://serre-lab.clps.brown.edu/resource/breakfast-actions-dataset/#Downloads, and we probably also need the "I3D feature (pretrained on Kinetics, no fine-tuning) for rgb and flow (2048 dim): [bf_kinetics_feat.tar.gz (27.7 GB)](https://drive.google.com/open?id=1I70VymcaQypIcJ8TXhb2_AlSmoo6MUm4)"
+
+3. Change in `breakfast_action.py` the following lines (11-14):
 ```
 features_path = "datasets/breakfast_action/features/"
 self.labels_path = "datasets/breakfast_action/groundTruth/"
