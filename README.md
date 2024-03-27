@@ -41,10 +41,17 @@ The reproduction is based on:
 8. Open Pycharm, in bottom right you can select your interpreter:   
    ![setup_img/interpreter.png](setup_img/interpreter.png)
 9. Add the Conda environment that we just created, using the ENV_PATH from above ![setup_img/conda_env.png](setup_img/conda_env.png)
+10. (If you get an error like this `AttributeError: module 'backend_interagg' has no attribute 'FigureCanvas'`) Add the following lines at the top of your `tsa.py` file:
+    ```
+    import matplotlib
+    matplotlib.use('TkAgg')
+    ```
 
-### Helper commands (in case you want to reset the instalation)
+### Helper commands (in case you want to reset the installation)
 - See all the conda environments `conda env list`
 - Remove the created env: `conda env remove --name tsa-action-seg`
+
+
 
 ## Datasets
 
@@ -70,13 +77,15 @@ Silvia's suggestion, download from here: http://camma.u-strasbg.fr/datasets
 ## Run
 
 ### Do I have a GPU?
-You can check if you have a GPU by running the file called `whats_my_GPU.py`
+You can check if you have a GPU by running the file called [`whats_my_GPU.py`](whats_my_GPU.py)
 
 ### Run on Breakfast dataset
 In Pycharm you can right-click on `tsa.py` file > `More Run/Debug` > `Modify Run Configuration..` and in `Parameters` you should put:
-- if you have a GPU: `--config_exp configs/breakfast_action.yml --gpu <NAME_OF_YOUR_GPU> --name <NAME_OF_EXPERIMENT>`
+- if you have a GPU: `--config_exp configs/breakfast_action.yml --gpu <ID_OF_YOUR_GPU> --name <NAME_OF_EXPERIMENT>`
+  - example: `--config_exp configs/breakfast_action.yml --gpu 0 --name experiment_1`
 - if you don't have a GPU: `--config_exp configs/breakfast_action.yml --name <NAME_OF_EXPERIMENT>`
-- example: `--config_exp configs/breakfast_action.yml --name experiment_1`
+  - example: `--config_exp configs/breakfast_action.yml --name experiment_1`
+  - Please note: I could **NOT** get it to run without a GPU!
 
 
 # TODO...
