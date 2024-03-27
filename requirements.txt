@@ -1,7 +1,4 @@
 easydict
-torch
-torchvision
-torchaudio
 numpy
 mpmath
 typing-extensions
