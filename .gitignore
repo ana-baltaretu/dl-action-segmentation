@@ -160,3 +160,6 @@ cython_debug/
 .idea/
 *.txt
 breakfast_action_clone/
+
+positive_window_plots/
+reduced_features/
