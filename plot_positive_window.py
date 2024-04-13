@@ -26,7 +26,7 @@ def plot_weight_function(positive_window):
     # plt.xlim(0, 2)
 
     plt.savefig(f"positive_window_plots/window_{window}")
-    # plt.clf()  # Clear the plot after saving
+    plt.clf()  # Clear the plot after saving
     # plt.show()
 
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     # Plot the weight function for different positive window values
     # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 100, 200]
-    positive_window_values = [4, 5, 6, 7, 8, 9, 10]  # Example values for positive window
+    positive_window_values = [100, 150, 200]  # Example values for positive window
     for window in positive_window_values:
         plot_weight_function(window)
 
